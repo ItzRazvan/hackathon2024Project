@@ -1,0 +1,142 @@
+
+
+body{
+    background-color: #f8f9fa;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+}
+
+button{
+  background: #5E5DF0;
+  border-radius: 999px;
+  box-shadow: #5E5DF0 0 2vh 2vw -2vh;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 2.8vh;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 0.6vw 2vh;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+  transition: background 0.2s ease 0s, box-shadow 0.2s ease 0s;
+}
+
+button:hover{
+  background: #4D4CF9;
+  box-shadow: #4D4CF9 0 2vh 2vw -2vh;
+}
+
+label{
+    color: #6C757D;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 4vh;
+    margin-bottom: 1.2vh;
+}
+
+#loginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    gap: 3vh;
+    background-color: #FFFFFF;
+    border-radius: 1vh;
+    box-shadow: 0 0 1vh 0 rgba(0,0,0,0.1);
+    margin: 0 auto;
+    padding: 4vh 3vh;
+    width: 30vw;
+    transition: all 0.2s;
+}
+
+
+.formular{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12vh;
+}
+
+.nume{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.parola{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    color: #343A40;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 4vh;
+    margin-bottom: 2vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 8vh;
+}
+
+input{
+    width: 20vw;
+    height: 4vh;
+    border: 1px solid #CED4DA;
+    transition: all 0.2s;
+    padding: 0.5vh 1vh;
+}
+
+@media screen and (max-width: 1200px){
+    #loginForm{
+        width: 35vw;
+    }
+
+    input{
+        width: 27vw;
+    }
+
+    button{
+        padding: 0.8vw 2.1vh;
+    
+    }
+}
+
+@media screen and (max-width: 800px){
+    #loginForm{
+        width: 40vw;
+    }
+
+    input{
+        width: 33vw;
+    }
+
+    button{
+        padding: 1vw 2.4vh;
+    
+    }
+}
+
+@media screen and (max-width: 600px){
+    #loginForm{
+        width: 60vw;
+    }
+
+    input{
+        width: 44vw;
+    }
+
+    button{
+        padding: 1.6vw 3vh;
+    }
+    
+    
+}
