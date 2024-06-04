@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/signup.css">
+    <title>Signup</title>
+</head>
+<body>
+    <div class="formular">
+        <form id="signupForm" method="POST">
+            <div class="name">
+                <label for="name">Nume:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="eml">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>  
+            <div class="parola">
+                <label for="password">Parola:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="accessCont">
+                <label for="access">Acces:</label>
+                <select id="access" name="access" required>
+                    <option value="user">user</option>
+                    <option value="admin">admin</option>
+                </select>
+            </div>
+            <button type="submit">Signup</button>
+        </form>
+        <p id="signupError"></p>
+        <p id="signupSuccess"></p>
+    </div>
+</body>
+<script src="/js/signupReq.js"></script>
+</html>

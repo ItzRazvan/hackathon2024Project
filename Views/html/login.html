@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="/css/login.css">
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
     <h1>Login</h1>
     <div class="formular">
         <form id="loginForm" method="post">
             <div class="nume">
-                <label>Nume utilizator</label>
-                <input type="text" name="username" id="username">
+                <label>Email</label>
+                <input type="text" name="email" id="email" required>
             </div>
             <div class="parola">
                 <label>Parola</label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" required>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" id="loginBtn">Login</button>
         </form>
+        <p id="loginError"></p>
     </div>
 </body>
+<script src="/js/loginReq.js"></script>
 </html>

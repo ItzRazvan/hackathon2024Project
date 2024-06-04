@@ -1,0 +1,113 @@
+
+
+.formular{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12vh;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border-radius: 1vh;
+    box-shadow: 0 0 1vh 0 rgba(0,0,0,0.1);
+    margin: 0 auto;
+    padding: 4vh 3vh;
+    width: 30vw;
+    transition: all 0.2s;
+    justify-content: center;
+    align-items: center;
+}
+
+.name{
+    display:flex;
+    flex-direction: column;
+}
+
+.parola{
+    display:flex;
+    flex-direction: column;
+
+}
+
+.eml{
+    display:flex;
+    flex-direction: column;
+}
+
+.accessCont{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+
+input{
+    width: 20vw;
+    height: 4vh;
+    border: 1px solid #CED4DA;
+    transition: all 0.2s;
+    padding: 0.5vh 1vh;
+    margin-bottom: 3vh;
+}
+
+#signupError{
+    color: #FF0000;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 4vh;
+    margin-top: 1.5vh;
+
+}
+
+#signupSuccess{
+    color: #008000;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 4vh;
+    margin-top: 1.5vh;
+}
+
+
+label{
+    color: #6C757D;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 4vh;
+    margin-bottom: 1.2vh;
+}
+
+select{
+    width: 20vw;
+    height: 4vh;
+    border: 1px solid #CED4DA;
+    transition: all 0.2s;
+    padding: 0.5vh 1vh;
+    margin-bottom: 3vh;
+}
+
+option{
+    color: #6C757D;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 4vh;
+    margin-bottom: 1.2vh;
+}
+
+button{
+    width: 20vw;
+    height: 4vh;
+    background-color: #007BFF;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 0.5vh;
+    transition: all 0.2s;
+    margin-top: 1.5vh;
+}
+
+button:hover{
+    background-color: #0056b3;
+    cursor: pointer;
+}

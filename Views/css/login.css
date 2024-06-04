@@ -59,6 +59,7 @@ label{
 
 .formular{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 12vh;
@@ -94,6 +95,16 @@ input{
     transition: all 0.2s;
     padding: 0.5vh 1vh;
 }
+
+#loginError{
+    color: #FF0000;
+    font-size: 1.15rem;
+    font-weight: 400;
+    line-height: 4vh;
+    margin-top: 1.5vh;
+
+}
+
 
 @media screen and (max-width: 1200px){
     #loginForm{

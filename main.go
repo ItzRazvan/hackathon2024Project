@@ -1,7 +1,7 @@
 package main
 
-import "github.com/ItzRazvan/hackathon/school"
+import schoolFiles "github.com/ItzRazvan/school/backend"
 
 func main() {
-	school.ServerStart()
+	schoolFiles.ServerStart()
 }
