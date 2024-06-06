@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="/css/tabel.css">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <script src="/js/rowClick.js"></script>
     <title>Tabel</title>
 </head>
 <body>
@@ -36,8 +38,8 @@
             <th>Decembrie</th>
         </tr>
         {{range .absenteLuna}}
-        <tr>
-            <td>{{.Id}}</td>
+        <tr class="coloanaLuna" onclick="rowClickMonth(event)">
+            <td class="tableIdLuna">{{.Id}}</td>
             <td>{{.Name}}</td>
             <td>{{.January}}</td>
             <td>{{.February}}</td>
@@ -63,8 +65,8 @@
             <th>2024</th>
         </tr>
         {{range .absenteAn}}
-        <tr>
-            <td>{{.Id}}</td>
+        <tr id="coloanaAn" onclick="rowClickYear(event)">
+            <td class="tableIdAn">{{.Id}}</td>
             <td>{{.Name}}</td>
             <td>{{.Y2023}}</td>
             <td>{{.Y2024}}</td>

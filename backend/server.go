@@ -40,5 +40,7 @@ func ServerStart() {
 
 	app.GET("/getData", getData)
 
+	app.GET("/users", showUserAbsences)
+
 	app.Logger.Fatal(app.Start(":8080"))
 }

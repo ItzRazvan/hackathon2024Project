@@ -234,10 +234,36 @@ func addAbsentaToDB(id uint, month string, year string) error {
 		return err
 	}
 
-	if year == strconv.Itoa(time.Now().Year()) {
+	actualYear := year[1:]
+	actualYearInt, err := strconv.Atoi(actualYear)
+	if err != nil {
+		return err
+	}
+
+	if actualYearInt == time.Now().Year() {
 		db.Exec("UPDATE user_absence_month SET "+month+" = "+month+" + 1 WHERE id = ?", id)
 	}
 	db.Exec("UPDATE user_absence_year SET "+year+" = "+year+" + 1 WHERE id = ?", id)
+
+	return nil
+}
+
+func addAbsenteToAllAbsences(id uint, day int, hour int, minute int, month string, year int) error {
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+		return err
+	}
+
+	absenta := absenta{
+		Id:     id,
+		Year:   year,
+		Month:  month,
+		Day:    day,
+		Hour:   hour,
+		Minute: minute,
+	}
+
+	db.Table("absente").Create(&absenta)
 
 	return nil
 }
@@ -279,4 +305,17 @@ func getAbsenteMonthById(id uint) UserAbsenceMonth {
 	db.Where("id = ?", id).First(&absenteLuna)
 
 	return absenteLuna
+}
+
+func getAllAbsencesForUser(id uint) []absenta {
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+		return nil
+	}
+
+	var absences []absenta
+
+	db.Table("absente").Where("id = ?", id).Find(&absences)
+
+	return absences
 }

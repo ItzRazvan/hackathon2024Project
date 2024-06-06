@@ -8,13 +8,12 @@ import (
 )
 
 type Absenta struct {
-	IdUser  uint   `json:"id_user"`
-	Secunda int    `json:"secunda"`
-	Minut   int    `json:"minut"`
-	Ora     int    `json:"ora"`
-	Ziua    int    `json:"ziua"`
-	Luna    string `json:"luna"`
-	An      int    `json:"an"`
+	IdUser uint   `json:"id_user"`
+	Minut  int    `json:"minut"`
+	Ora    int    `json:"ora"`
+	Ziua   int    `json:"ziua"`
+	Luna   string `json:"luna"`
+	An     int    `json:"an"`
 }
 
 func addAbsenta(c echo.Context) error {
@@ -28,6 +27,12 @@ func addAbsenta(c echo.Context) error {
 		}
 
 		err = addAbsentaToDB(absenta.IdUser, strings.ToLower(absenta.Luna), "y"+strconv.Itoa(absenta.An))
+
+		if err != nil {
+			return err
+		}
+
+		err = addAbsenteToAllAbsences(absenta.IdUser, absenta.Ziua, absenta.Ora, absenta.Minut, strings.ToLower(absenta.Luna), absenta.An)
 
 		if err != nil {
 			return err

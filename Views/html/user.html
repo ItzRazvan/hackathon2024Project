@@ -1,0 +1,19 @@
+{{define "user.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/css/user.css">
+    <title>User</title>
+</head>
+<body>
+    {{range .absente}}
+    <h1>Absenta</h1>
+    <p>Ora:{{.Hour}}:{{.Minute}}</p>
+    <p>Ziua: {{.Day}} {{.Month}} {{.Year}}</p>
+    {{end}}
+</body>
+</html>
+
+{{end}}
