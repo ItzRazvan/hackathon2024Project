@@ -1,4 +1,4 @@
-document.getElementById("loginForm").addEventListener("submit", () => {
+document.getElementById("loginForm").addEventListener("submit", (event) => {
 	event.preventDefault();
 
 	fetch("/login", {

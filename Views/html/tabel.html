@@ -1,0 +1,76 @@
+{{define "tabel.html"}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/css/tabel.css">
+    <title>Tabel</title>
+</head>
+<body>
+
+    <div class="topButtons">
+        <button id="goBack">Back</button>
+        <select name="tableType" id="tableType">
+            <option value="month">Luna</option>
+            <option value="year">An</option>
+        </select>
+    </div>
+
+    <table id="month">
+        <tr>
+            <th>ID</th>
+            <th>Nume</th>
+            <th>Ianuarie</th>
+            <th>Februarie</th>
+            <th>Martie</th>
+            <th>Aprilie</th>
+            <th>Mai</th>
+            <th>Iunie</th>
+            <th>Iulie</th>
+            <th>August</th>
+            <th>Septembrie</th>
+            <th>Octombrie</th>
+            <th>Noiembrie</th>
+            <th>Decembrie</th>
+        </tr>
+        {{range .absenteLuna}}
+        <tr>
+            <td>{{.Id}}</td>
+            <td>{{.Name}}</td>
+            <td>{{.January}}</td>
+            <td>{{.February}}</td>
+            <td>{{.March}}</td>
+            <td>{{.April}}</td>
+            <td>{{.May}}</td>
+            <td>{{.June}}</td>
+            <td>{{.July}}</td>
+            <td>{{.August}}</td>
+            <td>{{.September}}</td>
+            <td>{{.October}}</td>
+            <td>{{.November}}</td>
+            <td>{{.December}}</td>
+        </tr>
+        {{end}}
+    </table>
+
+    <table id="year">
+        <tr>
+            <th>ID</th>
+            <th>Nume</th>
+            <th>2023</th>
+            <th>2024</th>
+        </tr>
+        {{range .absenteAn}}
+        <tr>
+            <td>{{.Id}}</td>
+            <td>{{.Name}}</td>
+            <td>{{.Y2023}}</td>
+            <td>{{.Y2024}}</td>
+        </tr>
+        {{end}}
+</body>
+<script src="/js/table.js"></script>
+</html>
+{{end}}

@@ -1,0 +1,124 @@
+button{
+    outline: 0;
+    align-items: center;
+    background-color: #e946c6;
+    border: 1px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    justify-content: center;
+    line-height: 1.5;
+    overflow: hidden;
+    padding: 1vh 1vw;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all .14s ease-out;
+    white-space: nowrap;
+    color: #000;
+}
+
+button:hover {
+    box-shadow: 0.2vw 0.5vh 0 #000;
+    transform: translate(-0.2vw,-0.5vh);
+}
+
+button:focus-visible{
+    outline-offset: 0.5vw;
+}
+
+
+.topButtons{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 3vh;
+    gap: 1.25vw;
+    margin-right: 2vw;
+}
+
+#goToSignup{
+    display: none;
+}
+
+#goToTable{
+    display: none;
+}
+
+.absencesCont{
+    display: flex;
+    flex-direction: column;
+    margin-top: 18vh;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+    color: #343A40;
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 4vh;
+    margin-bottom: 2vh;
+    display: flex;
+}
+
+h2{
+    color: #343A40;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+}
+
+
+p{
+    color: #6C757D;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 4vh;
+    margin-top: -2vh;
+    margin-bottom: 3vh;
+}
+
+@media screen and (max-width: 768px) {
+    .absencesCont{
+        margin-top: 10vh;
+    }
+
+    h1{
+        font-size: 2rem;
+    }
+
+    h2{
+        font-size: 1.3rem;
+    }
+
+    p{
+        font-size: 1.1rem;
+    }
+
+
+    
+}
+
+@media screen and (max-width: 600px) {
+    .absencesCont{
+        margin-top: 5vh;
+    }
+    
+    h1{
+        font-size: 1.8rem;
+    }
+
+    h2{
+        font-size: 1.1rem;
+    }
+
+    p{
+        font-size: 1rem;
+    }
+
+    button{
+        padding: 1.3vw 2vh;
+    }
+}

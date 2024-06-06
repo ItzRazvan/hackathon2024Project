@@ -24,7 +24,6 @@ func sessionInit(c echo.Context, id uint) error {
 	session.Options = &sessions.Options{
 		MaxAge: 60 * 60 * 24,
 		Path:   "/",
-		Domain: "localhost",
 		Secure: false,
 	}
 

@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 12vh;
+    margin-top: 8vh;
 }
 
 form{
@@ -51,6 +51,7 @@ input{
     transition: all 0.2s;
     padding: 0.5vh 1vh;
     margin-bottom: 3vh;
+    color: #000;
 }
 
 #signupError{
@@ -86,6 +87,9 @@ select{
     transition: all 0.2s;
     padding: 0.5vh 1vh;
     margin-bottom: 3vh;
+    color: #000;
+    text-indent: 0.6vw;
+
 }
 
 option{
@@ -96,18 +100,136 @@ option{
     margin-bottom: 1.2vh;
 }
 
-button{
-    width: 20vw;
-    height: 4vh;
-    background-color: #007BFF;
+#submit{
+    background: #5E5DF0;
+    border-radius: 999px;
+    box-shadow: #5E5DF0 0 2vh 2vw -2vh;
+    box-sizing: border-box;
     color: #FFFFFF;
-    border: none;
-    border-radius: 0.5vh;
-    transition: all 0.2s;
-    margin-top: 1.5vh;
+    cursor: pointer;
+    font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 2.8vh;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 0.6vw 2vh;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+    transition: background 0.2s ease 0s, box-shadow 0.2s ease 0s;
+  }
+  
+  #submit:hover{
+    background: #4D4CF9;
+    box-shadow: #4D4CF9 0 2vh 2vw -2vh;
+  }
+
+
+  #goBack{
+    outline: 0;
+    align-items: center;
+    background-color: #e946c6;
+    border: 1px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    justify-content: center;
+    line-height: 1.5;
+    overflow: hidden;
+    padding: 1vh 1vw;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all .14s ease-out;
+    white-space: nowrap;
+                
 }
 
-button:hover{
-    background-color: #0056b3;
-    cursor: pointer;
+#goBack:hover {
+    box-shadow: 0.2vw 0.5vh 0 #000;
+    transform: translate(-0.2vw,-0.5vh);
+}
+
+#goBack:focus-visible{
+    outline-offset: 0.5vw;
+}
+
+.goBackDiv{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 3vh;
+    gap: 1.25vw;
+    margin-right: 2vw;
+}
+
+button{
+    color: #000;
+}
+
+@media screen and (max-width: 1200px){
+    #signupForm{
+        width: 35vw;
+    }
+
+    input{
+        width: 27vw;
+    }
+
+}
+
+@media screen and (max-width: 800px){
+    #signupForm{
+        width: 40vw;
+    }
+
+    .formular{
+        margin-top: 6vh;
+    }
+
+    input{
+        width: 33vw;
+    }
+
+    #submit{
+        padding: 1vw 2.4vh;
+    
+    }
+
+    select{
+        width: 33vw;
+    }
+
+}
+
+@media screen and (max-width: 600px){
+    #signupForm{
+        width: 70vw;
+    }
+
+    .formular{
+        margin-top: 4vh;
+    }
+
+    input{
+        width: 50vw;
+    }
+
+    #submit{
+        padding: 1.6vw 3vh;
+    }
+    
+    select{
+        width: 50vw;
+    }
+
+    #goBack{
+        padding: 1.3vw 2vh;
+    }
+    
 }

@@ -6,6 +6,7 @@ body{
 }
 
 button{
+    color: #000;
   background: #5E5DF0;
   border-radius: 999px;
   box-shadow: #5E5DF0 0 2vh 2vw -2vh;

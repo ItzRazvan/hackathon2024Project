@@ -18,3 +18,7 @@ document.getElementById("signupForm").addEventListener("submit", () => {
 		}
 	});
 });
+
+document.getElementById("goBack").addEventListener("click", () => {
+	window.location.href = "/";
+});

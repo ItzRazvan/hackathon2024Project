@@ -23,13 +23,20 @@ func ServerStart() {
 
 	app.Static("/", "/Views")
 
+	app.GET("/user", sendUserInfo)
+
 	app.GET("/login", login)
 	app.POST("/login", loginPost)
+	app.DELETE("/login", logout)
 
 	app.GET("/", home)
 
 	app.GET("/signup", signup)
 	app.POST("/signup", signupPost)
+
+	app.GET("/tabele", tabele)
+
+	app.POST("/absenta", addAbsenta)
 
 	app.Logger.Fatal(app.Start(":8080"))
 }

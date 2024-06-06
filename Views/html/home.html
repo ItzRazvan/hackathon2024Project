@@ -1,17 +1,29 @@
+{{define "home.html"}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/css/home.css">
     <title>HomePage</title>
 </head>
 <body>
-    <button onclick="goToSignup()">click!</button>
-</body>
-<script>
-    function goToSignup(){
-        window.location.href = "/signup";
-    }
-</script>
+    <div class="topButtons">
+        <button id="goToTable">Tabel</button>
+        <button id="goToSignup">Signup</button>
+        <button id="goToLogin">Logout</button>
+    </div>
 
+    <div class="absencesCont">
+        <h1>Absente</h1>
+        <h2>Pentru aceasta luna: {{.luna}}</h2>
+        <p id="absences">{{.absenteLuna}}</p>
+
+        <h2>Pentru acest an: {{.an}}</h2>
+        <p id="absences">{{.absenteAn}}</p>
+
+    </div>
+</body>
+<script src="/js/homeReq.js"></script>
 </html>
+{{end}}
