@@ -38,5 +38,7 @@ func ServerStart() {
 
 	app.POST("/absenta", addAbsenta)
 
+	app.GET("/getData", getData)
+
 	app.Logger.Fatal(app.Start(":8080"))
 }

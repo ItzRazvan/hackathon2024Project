@@ -267,3 +267,16 @@ func getAllAbsenteYear() []UserAbsenceYear {
 
 	return absenteAn
 }
+
+func getAbsenteMonthById(id uint) UserAbsenceMonth {
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+		return UserAbsenceMonth{}
+	}
+
+	var absenteLuna UserAbsenceMonth
+
+	db.Where("id = ?", id).First(&absenteLuna)
+
+	return absenteLuna
+}
