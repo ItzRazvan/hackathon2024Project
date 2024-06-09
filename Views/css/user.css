@@ -1,0 +1,102 @@
+
+
+h1{
+    color: red;
+    margin-left: 10vw;
+    font-size: 2.6rem;
+
+}
+
+.absentaCont{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5vh 2vw; /* Add horizontal margin for spacing between cards */
+    padding: 2vh;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 17.5vw; /* Add width for card size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add box-shadow for card effect */
+}
+
+.toateAbsentele{
+    display: flex;
+    flex-direction: row; 
+    justify-content: flex-start;
+    align-items: start;
+    flex-wrap: wrap;
+    margin-top: 5vh;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.absentaCont h2{
+    color: red;
+}
+
+.absentaCont p{
+    color: black;
+}
+
+
+#goBack{
+    outline: 0;
+    align-items: center;
+    background-color: #e946c6;
+    border: 1px solid #000;
+    border-radius: 4px;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    justify-content: center;
+    line-height: 1.5;
+    overflow: hidden;
+    padding: 1vh 1vw;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: all .14s ease-out;
+    white-space: nowrap;
+                
+}
+
+#goBack:hover {
+    box-shadow: 0.2vw 0.5vh 0 #000;
+    transform: translate(-0.2vw,-0.5vh);
+}
+
+#goBack:focus-visible{
+    outline-offset: 0.5vw;
+}
+
+.goBackDiv{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 3vh;
+    gap: 1.25vw;
+    margin-right: 2vw;
+}
+
+button{
+    color: #000;
+}
+
+@media screen and (max-width: 600px) {
+    .absentaCont{
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 2.5vh;
+    }
+    .toateAbsentele{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1vh;
+    }
+    #goBack{
+        padding: 1.3vw 2vh;
+    }
+    
+}

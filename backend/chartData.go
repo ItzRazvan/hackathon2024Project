@@ -1,6 +1,10 @@
 package backend
 
-import "github.com/labstack/echo/v4"
+import (
+	"strconv"
+
+	"github.com/labstack/echo/v4"
+)
 
 type chartDataStruct struct {
 	Labels []string `json:"labels"`
@@ -10,7 +14,19 @@ type chartDataStruct struct {
 func getData(c echo.Context) error {
 
 	if isLoggedIn(c) {
-		id := getId(c)
+		var id uint
+
+		//we check if the id is in the url
+
+		if c.QueryParam("id") != "" {
+			idUint, err := strconv.ParseUint(c.QueryParam("id"), 10, 32)
+			if err != nil {
+				return c.JSON(400, "Invalid id")
+			}
+			id = uint(idUint)
+		} else {
+			id = getId(c)
+		}
 
 		absenteLuna := getAbsenteMonthById(id)
 

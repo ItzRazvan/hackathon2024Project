@@ -8,12 +8,26 @@
     <title>User</title>
 </head>
 <body>
-    {{range .absente}}
-    <h1>Absenta</h1>
-    <p>Ora:{{.Hour}}:{{.Minute}}</p>
-    <p>Ziua: {{.Day}} {{.Month}} {{.Year}}</p>
-    {{end}}
+    <div class="goBackDiv">
+        <button id="goBack">Back</button>
+    </div>
+    <h1>Absente</h1>
+    <div class="toateAbsentele">
+        {{range .absente}}
+        <div class="absentaCont">
+            <h2 class="absence"></h2>
+            <p>Ora:{{.Hour}}:{{.Minute}}</p>
+            <p>Ziua: {{.Day}} {{.Month}} {{.Year}}</p>
+        </div>
+        {{end}}
+    </div>
+    <div class="chart">
+        <canvas id="myChart" style="width: 400px; height: 200px;"></canvas>
+    </div>
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/user.js"></script>
 </html>
 
 {{end}}
