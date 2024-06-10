@@ -93,6 +93,25 @@ option{
     margin-left: 2vw;
 }
 
+#search{
+    width: 20vw;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #000;
+    padding: 0.5em;
+    justify-self: right;
+    margin-left: 4vw;
+
+}
+
+.search{
+    display: flex;
+    justify-content: right;
+    margin-left: 10vw;
+
+}
+
 @media screen and (max-width: 1200px){
     #year{
         width: 60%;
@@ -100,6 +119,10 @@ option{
 
     #tableType{
         width: 14vw;
+    }
+
+    #search{
+        width: 25vw;
     }
 
     
@@ -117,6 +140,10 @@ option{
 
     #goBack{
         padding: 1.3vw 2vh;
+    }
+
+    #search{
+        width: 30vw;
     }
     
 }

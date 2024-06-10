@@ -18,7 +18,11 @@
             <option value="month">Luna</option>
             <option value="year">An</option>
         </select>
+        <div class="search">
+            <input type="text" id="search" onkeyup="searchTable()" placeholder="Cauta dupa nume">
+        </div>  
     </div>
+
 
     <table id="month">
         <tr>
@@ -40,7 +44,7 @@
         {{range .absenteLuna}}
         <tr class="coloanaLuna" onclick="rowClickMonth(event)">
             <td class="tableIdLuna">{{.Id}}</td>
-            <td>{{.Name}}</td>
+            <td class="numeLuna">{{.Name}}</td>
             <td>{{.January}}</td>
             <td>{{.February}}</td>
             <td>{{.March}}</td>
@@ -67,7 +71,7 @@
         {{range .absenteAn}}
         <tr id="coloanaAn" onclick="rowClickYear(event)">
             <td class="tableIdAn">{{.Id}}</td>
-            <td>{{.Name}}</td>
+            <td class="numeAn">{{.Name}}</td>
             <td>{{.Y2023}}</td>
             <td>{{.Y2024}}</td>
         </tr>
