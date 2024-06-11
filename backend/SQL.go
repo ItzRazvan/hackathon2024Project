@@ -248,7 +248,7 @@ func addAbsentaToDB(id uint, month string, year string) error {
 	return nil
 }
 
-func addAbsenteToAllAbsences(id uint, day int, hour int, minute int, month string, year int) error {
+func addAbsenteToAllAbsences(id uint, day int, hour int, minute string, month string, year int) error {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		return err

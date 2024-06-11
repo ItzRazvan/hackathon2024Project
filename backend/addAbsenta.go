@@ -9,7 +9,7 @@ import (
 
 type Absenta struct {
 	IdUser uint   `json:"id_user"`
-	Minut  int    `json:"minut"`
+	Minut  string `json:"minut"`
 	Ora    int    `json:"ora"`
 	Ziua   int    `json:"ziua"`
 	Luna   string `json:"luna"`

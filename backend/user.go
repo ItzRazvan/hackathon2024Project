@@ -23,7 +23,7 @@ type absenta struct {
 	Month  string `json:"month"`
 	Day    int    `json:"day"`
 	Hour   int    `json:"hour"`
-	Minute int    `json:"minute"`
+	Minute string `json:"minute"`
 }
 
 func showUserAbsences(c echo.Context) error {
