@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 8vh;
+    margin-top: 1vh;
 }
 
 form{
@@ -44,6 +44,16 @@ form{
     margin-bottom: 3vh;
 }
 
+.postImg{
+    display: flex;
+    flex-direction: column;
+
+}
+
+#postImg{
+    border: 0px;
+}
+
 input{
     width: 20vw;
     height: 4vh;
@@ -52,6 +62,8 @@ input{
     padding: 0.5vh 1vh;
     margin-bottom: 3vh;
     color: #000;
+    text-indent: 0.6vw;
+
 }
 
 #signupError{

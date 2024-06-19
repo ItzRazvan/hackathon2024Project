@@ -1,6 +1,10 @@
 package backend
 
 import (
+	"bytes"
+	"encoding/json"
+	"io"
+	"mime/multipart"
 	"net/http"
 
 	emailverifier "github.com/AfterShip/email-verifier"
@@ -23,6 +27,11 @@ func signupPost(c echo.Context) error {
 		email := c.FormValue("email")
 		password := c.FormValue("password")
 		access := c.FormValue("access")
+		image, err := c.FormFile("image")
+
+		if err != nil {
+			return c.String(http.StatusInternalServerError, "Internal Server Error")
+		}
 
 		ret, err := verifier.Verify(email)
 		if err != nil {
@@ -44,8 +53,6 @@ func signupPost(c echo.Context) error {
 			return c.String(http.StatusInternalServerError, "Internal Server Error")
 		}
 
-		//we create a user_absence_month and user_absence_year for the new user
-
 		err = createUserAbsenceMonth(id)
 		if err != nil {
 			return c.String(http.StatusInternalServerError, "Internal Server Error")
@@ -55,7 +62,56 @@ func signupPost(c echo.Context) error {
 		if err != nil {
 			return c.String(http.StatusInternalServerError, "Internal Server Error")
 		}
+
+		_ = sendUserData(id, name, email, image)
 	}
 	return nil
 
+}
+
+func sendUserData(id uint, name string, email string, image *multipart.FileHeader) error {
+	file, err := image.Open()
+
+	if err != nil {
+		return err
+	}
+
+	defer file.Close()
+
+	imageBytes, err := io.ReadAll(file)
+
+	if err != nil {
+		return err
+	}
+
+	data := map[string]interface{}{
+		"id":    id,
+		"name":  name,
+		"email": email,
+		"image": imageBytes,
+	}
+
+	jsonData, err := json.Marshal(data)
+
+	if err != nil {
+		return err
+	}
+
+	req, err := http.NewRequest("POST", "http://localhost:6969/newUser", bytes.NewBuffer(jsonData))
+
+	if err != nil {
+		return err
+	}
+
+	client := &http.Client{}
+
+	resp, err := client.Do(req)
+
+	if err != nil {
+		return err
+	}
+
+	defer resp.Body.Close()
+
+	return nil
 }

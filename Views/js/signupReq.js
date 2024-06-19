@@ -1,5 +1,7 @@
 document.getElementById("signupForm").addEventListener("submit", () => {
 	event.preventDefault();
+	document.getElementById("signupError").innerText = "";
+	document.getElementById("signupSuccess").innerText = "";
 
 	fetch("/signup", {
 		method: "POST",
@@ -10,11 +12,12 @@ document.getElementById("signupForm").addEventListener("submit", () => {
 			document.getElementById("name").value = "";
 			document.getElementById("email").value = "";
 			document.getElementById("password").value = "";
+			document.getElementById("postImg").value = "";
 			document.getElementById("signupSuccess").innerText =
 				"Cont creat cu succes!";
 		} else {
 			document.getElementById("signupError").innerText =
-				"Sintaxa emailului este gresita sau parola e pre scurta";
+				"Sintaxa emailului este gresita sau parola e prea scurta";
 		}
 	});
 });
