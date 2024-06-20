@@ -42,6 +42,14 @@ window.onload = function () {
 							display: true,
 							text: "Numarul de absente in fiecare luna",
 						},
+						layout: {
+							padding: {
+								right: 30,
+							},
+						},
+
+						responsive: true,
+						maintainAspectRatio: false,
 					},
 				});
 			});

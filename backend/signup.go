@@ -2,6 +2,7 @@ package backend
 
 import (
 	"bytes"
+	"encoding/base64"
 	"encoding/json"
 	"io"
 	"mime/multipart"
@@ -42,8 +43,8 @@ func signupPost(c echo.Context) error {
 			return c.String(http.StatusBadRequest, "Invalid Email")
 		}
 
-		const minEntropy float64 = 50
-		err = passwordValidator.Validate(email, minEntropy)
+		const minEntropy float64 = 60
+		err = passwordValidator.Validate(password, minEntropy)
 		if err != nil {
 			return c.String(http.StatusBadRequest, "Invalid Email")
 		}
@@ -84,11 +85,15 @@ func sendUserData(id uint, name string, email string, image *multipart.FileHeade
 		return err
 	}
 
+	//transform image bytes to base64
+
+	imageBase64 := base64.StdEncoding.EncodeToString([]byte(imageBytes))
+
 	data := map[string]interface{}{
 		"id":    id,
 		"name":  name,
 		"email": email,
-		"image": imageBytes,
+		"image": imageBase64,
 	}
 
 	jsonData, err := json.Marshal(data)
@@ -97,7 +102,7 @@ func sendUserData(id uint, name string, email string, image *multipart.FileHeade
 		return err
 	}
 
-	req, err := http.NewRequest("POST", "http://localhost:6969/newUser", bytes.NewBuffer(jsonData))
+	req, err := http.NewRequest("POST", "http://192.168.178.1:6969/newUser", bytes.NewBuffer(jsonData))
 
 	if err != nil {
 		return err

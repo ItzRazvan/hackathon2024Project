@@ -1,3 +1,8 @@
+body{
+    overflow-x: hidden;
+
+}
+
 button{
     outline: 0;
     align-items: center;
@@ -49,9 +54,7 @@ button:focus-visible{
 .absencesCont{
     display: flex;
     flex-direction: column;
-    margin-top: 18vh;
-    align-items: center;
-    justify-content: center;
+    margin-top: 14vh;
 }
 
 h1{
@@ -63,11 +66,16 @@ h1{
     display: flex;
 }
 
+.absenteTitle{
+    margin-left: 20vw;
+}
+
 h2{
     color: #343A40;
     font-size: 1.5rem;
     font-weight: 700;
     display: flex;
+    margin-left: 5vw;
 }
 
 
@@ -81,11 +89,13 @@ p{
 }
 
 .chart{
-    margin-top: 3vh;
+    margin-top: 7vh;
     display: flex;
     flex-direction: column; 
-    align-items: center;
+    width: 60vw;
+    height: 50vh;
     justify-content: center;
+    align-items: center;
 }
 
 .chartTitle{
@@ -94,11 +104,45 @@ p{
 }
 
 #myChart{
-    margin-top: 6vh;
+    margin-top: 2vh;
     margin-bottom: 5vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.chartCont{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3vh;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .absencesCont{
+        margin-top: 15vh;
+    }
+
+    h1{
+        font-size: 2.3rem;
+    }
+
+    h2{
+        font-size: 1.4rem;
+    }
+
+    p{
+        font-size: 1.2rem;
+    }
+
+    .chart{
+        width: 80vw;    
+        height: 40vh;
+    
+    }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -117,6 +161,14 @@ p{
     p{
         font-size: 1.1rem;
     }
+
+    .chart{
+        width: 100vw;    
+        height: 35vh;
+        margin-top: 3vh;
+    }
+
+
 
 
 

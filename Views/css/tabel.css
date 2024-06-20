@@ -101,14 +101,12 @@ option{
     color: #000;
     padding: 0.5em;
     justify-self: right;
-    margin-left: 4vw;
 
 }
 
 .search{
     display: flex;
     justify-content: right;
-    margin-left: 10vw;
 
 }
 
@@ -122,8 +120,9 @@ option{
     }
 
     #search{
-        width: 25vw;
+        width: 35vw;
     }
+    
 
     
 }
@@ -143,7 +142,7 @@ option{
     }
 
     #search{
-        width: 30vw;
+        width: 40vw;
     }
     
 }

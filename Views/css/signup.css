@@ -5,7 +5,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 1vh;
 }
 
 form{
@@ -89,7 +88,7 @@ label{
     font-size: 1.2rem;
     font-weight: 400;
     line-height: 4vh;
-    margin-bottom: 1.2vh;
+    margin-bottom: 0.5vh;
 }
 
 select{
@@ -186,18 +185,25 @@ button{
 
 @media screen and (max-width: 1200px){
     #signupForm{
-        width: 35vw;
+        width: 60vw;
     }
 
     input{
-        width: 27vw;
+        width: 40vw;
     }
 
+    select{
+        width: 40vw;
+    }
+
+    .formular{
+        margin-top: 4vh;
+    }
 }
 
 @media screen and (max-width: 800px){
     #signupForm{
-        width: 40vw;
+        width: 50vw;
     }
 
     .formular{
@@ -215,6 +221,14 @@ button{
 
     select{
         width: 33vw;
+    }
+
+    #signupError{
+        font-size: 0.8rem;
+    }
+
+    #singupSuccess{
+        font-size: 0.8rem;
     }
 
 }
@@ -243,5 +257,4 @@ button{
     #goBack{
         padding: 1.3vw 2vh;
     }
-    
 }

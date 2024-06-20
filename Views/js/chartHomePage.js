@@ -25,6 +25,15 @@ fetch("/getData", {
 						},
 					},
 
+					layout: {
+						padding: {
+							right: 30,
+						},
+					},
+
+					responsive: true,
+					maintainAspectRatio: false,
+
 					title: {
 						display: true,
 						text: "Numarul de absente in fiecare luna",

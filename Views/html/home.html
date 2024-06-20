@@ -15,18 +15,19 @@
     </div>
 
     <div class="absencesCont">
-        <h1>Absente</h1>
-        <h2>Pentru aceasta luna: {{.luna}}</h2>
-        <p id="absences">{{.absenteLuna}}</p>
+        <h1 class="absenteTitle">Absente</h1>
 
-        <h2>Pentru acest an: {{.an}}</h2>
-        <p id="absences">{{.absenteAn}}</p>
+        <h2>Luna {{.luna}}: {{.absenteLuna}}</h2>
+
+        <h2>Anul {{.an}}: {{.absenteAn}}</h2>
 
     </div>
 
-    <div class="chart">
-        <h1 class="chartTitle">Grafic</h1>
-        <canvas id="myChart" style="width: 400px; height: 200px;"></canvas>
+    <div class="chartCont">
+        <div class="chart">
+            <h1 class="chartTitle">Grafic</h1>
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
 </body>
 <script src="/js/homeReq.js"></script>
