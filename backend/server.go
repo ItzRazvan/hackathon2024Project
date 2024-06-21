@@ -42,5 +42,7 @@ func ServerStart() {
 
 	app.GET("/users", showUserAbsences)
 
+	app.POST("/isOk", reqIsOk)
+
 	app.Logger.Fatal(app.Start(":8080"))
 }

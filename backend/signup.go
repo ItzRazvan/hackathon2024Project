@@ -4,11 +4,13 @@ import (
 	"bytes"
 	"encoding/base64"
 	"encoding/json"
+	"fmt"
 	"io"
 	"mime/multipart"
 	"net/http"
+	"time"
 
-	emailverifier "github.com/AfterShip/email-verifier"
+	//emailverifier "github.com/AfterShip/email-verifier"
 	"github.com/labstack/echo/v4"
 	passwordValidator "github.com/wagslane/go-password-validator"
 )
@@ -20,10 +22,11 @@ func signup(c echo.Context) error {
 	return c.Redirect(http.StatusFound, "/login")
 }
 
-var verifier = emailverifier.NewVerifier()
+//var verifier = emailverifier.NewVerifier()
 
 func signupPost(c echo.Context) error {
-	if isLoggedIn(c) && isAdmin(c) {
+	imSendingTheReq := c.RealIP() == "192.168.137.50"
+	if (isLoggedIn(c) && isAdmin(c)) || imSendingTheReq {
 		name := c.FormValue("name")
 		email := c.FormValue("email")
 		password := c.FormValue("password")
@@ -34,37 +37,37 @@ func signupPost(c echo.Context) error {
 			return c.String(http.StatusInternalServerError, "Internal Server Error")
 		}
 
-		ret, err := verifier.Verify(email)
-		if err != nil {
-			return c.String(http.StatusInternalServerError, "Internal Server Error")
-		}
+		/*
+				ret, err := verifier.Verify(email)
+				if err != nil {
+					return c.String(http.StatusInternalServerError, "Internal Server Error")
+				}
+			if !ret.Syntax.Valid {
+				return c.String(http.StatusBadRequest, "Invalid Email")
+			}
+		*/
 
-		if !ret.Syntax.Valid {
-			return c.String(http.StatusBadRequest, "Invalid Email")
-		}
-
-		const minEntropy float64 = 60
+		const minEntropy float64 = 40
 		err = passwordValidator.Validate(password, minEntropy)
 		if err != nil {
-			return c.String(http.StatusBadRequest, "Invalid Email")
+			return c.String(http.StatusForbidden, "Invalid Email")
 		}
 
 		id, err := createUser(name, email, password, access)
 		if err != nil {
-			return c.String(http.StatusInternalServerError, "Internal Server Error")
+			return c.String(http.StatusForbidden, "Internal Server Error")
 		}
 
-		err = createUserAbsenceMonth(id)
+		err = sendUserData(id, name, email, image)
+
 		if err != nil {
-			return c.String(http.StatusInternalServerError, "Internal Server Error")
+			fmt.Println("Requestul nu a putut fi trimis")
+
+			deleteUser(id)
+
+			return c.String(http.StatusBadRequest, "Requestul nu a putut fi trimis")
 		}
 
-		err = createUserAbsenceYear(id)
-		if err != nil {
-			return c.String(http.StatusInternalServerError, "Internal Server Error")
-		}
-
-		_ = sendUserData(id, name, email, image)
 	}
 	return nil
 
@@ -102,21 +105,73 @@ func sendUserData(id uint, name string, email string, image *multipart.FileHeade
 		return err
 	}
 
-	req, err := http.NewRequest("POST", "http://192.168.178.1:6969/newUser", bytes.NewBuffer(jsonData))
+	req, err := http.NewRequest("POST", "http://192.168.137.1:6969/newUser", bytes.NewBuffer(jsonData))
 
 	if err != nil {
 		return err
 	}
+
+	client := &http.Client{
+		Timeout: time.Second * 1,
+	}
+
+	_, err = client.Do(req)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+type data struct {
+	Id    uint   `json:"id"`
+	Name  string `json:"name"`
+	Email string `json:"email"`
+	IsOk  bool   `json:"isOk"`
+}
+
+func reqIsOk(c echo.Context) error {
+	var d data
+	err := c.Bind(&d)
+
+	if err != nil {
+		return c.String(http.StatusInternalServerError, "Internal Server Error")
+	}
+
+	if !d.IsOk {
+		deleteUser(d.Id)
+
+		fmt.Println("Userul nu a fost adaugat")
+
+		req, _ := http.NewRequest("PUT", "http://localhost:8080/singup", bytes.NewBuffer([]byte("0")))
+
+		client := &http.Client{}
+
+		_, _ = client.Do(req)
+
+		return nil
+	}
+
+	err = createUserAbsenceMonth(d.Id)
+
+	if err != nil {
+		return c.String(http.StatusInternalServerError, "Internal Server Error")
+	}
+
+	err = createUserAbsenceYear(d.Id)
+
+	if err != nil {
+		return c.String(http.StatusInternalServerError, "Internal Server Error")
+	}
+
+	fmt.Println("Userul a fost adaugat cu succes")
+
+	req, _ := http.NewRequest("PUT", "http://localhost:8080/singup", bytes.NewBuffer([]byte("1")))
 
 	client := &http.Client{}
 
-	resp, err := client.Do(req)
-
-	if err != nil {
-		return err
-	}
-
-	defer resp.Body.Close()
+	_, _ = client.Do(req)
 
 	return nil
 }

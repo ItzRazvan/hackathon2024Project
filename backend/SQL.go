@@ -67,7 +67,10 @@ func createUser(name string, email string, password string, access string) (uint
 		Access:   access,
 	}
 
-	db.Create(&user)
+	result := db.Create(&user)
+	if result.Error != nil {
+		return 0, result.Error
+	}
 
 	var id uint
 	db.Raw("SELECT id FROM users WHERE email = ?", email).Scan(&id)
@@ -179,6 +182,17 @@ func createUserAbsenceYear(id uint) error {
 	}
 
 	db.Create(&userAbsenceYear)
+
+	return nil
+}
+
+func deleteUser(id uint) error {
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
+		return err
+	}
+
+	db.Exec("DELETE FROM users WHERE id = ?", id)
 
 	return nil
 }

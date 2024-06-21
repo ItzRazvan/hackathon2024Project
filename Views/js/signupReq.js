@@ -14,11 +14,17 @@ document.getElementById("signupForm").addEventListener("submit", () => {
 				document.getElementById("email").value = "";
 				document.getElementById("password").value = "";
 				document.getElementById("postImg").value = "";
+
 				document.getElementById("signupSuccess").innerText =
-					"Cont creat cu succes!";
-			} else {
+					"Contul se creeaza!";
+			} else if (response.status == 403) {
 				document.getElementById("signupError").innerText =
-					"Sintaxa emailului este gresita sau parola e prea scurta";
+					"Email deja folosit sau parola prea slaba";
+			} else if (response.status == 400) {
+				document.getElementById("signupError").innerText =
+					"Eroare la conectarea cu serverul";
+			} else {
+				document.getElementById("signupError").innerText = "Eroare";
 			}
 		})
 		.catch((error) => {
