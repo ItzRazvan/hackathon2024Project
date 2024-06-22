@@ -1,6 +1,7 @@
 package backend
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -19,11 +20,24 @@ type Absenta struct {
 func addAbsenta(c echo.Context) error {
 	//daca un request e facut, vom adauga o absenta la aceasta luna si an
 	if c.Request().Method == "POST" {
+		fmt.Println("Absenta adaugata")
+
 		absenta := new(Absenta)
 
 		err := c.Bind(absenta)
+
+		fmt.Println(absenta)
 		if err != nil {
 			return err
+		}
+
+		//transform absenta.minut in int
+		minut, err := strconv.Atoi(absenta.Minut)
+		if err != nil {
+			return err
+		}
+		if minut < 10 {
+			absenta.Minut = "0" + absenta.Minut
 		}
 
 		err = addAbsentaToDB(absenta.IdUser, strings.ToLower(absenta.Luna), "y"+strconv.Itoa(absenta.An))

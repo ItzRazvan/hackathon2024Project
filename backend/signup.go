@@ -112,7 +112,7 @@ func sendUserData(id uint, name string, email string, image *multipart.FileHeade
 	}
 
 	client := &http.Client{
-		Timeout: time.Second * 1,
+		Timeout: time.Second * 5,
 	}
 
 	_, err = client.Do(req)
